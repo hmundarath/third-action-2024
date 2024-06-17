@@ -3,7 +3,17 @@ on:
   pull_request:
     types: 
       - opened
+    branches:
+      - main  # only main
   workflow_dispatch:
+  push:
+    branches:
+      - main  # only main
+      - 'dev-*' # dev-new | dev-this-is-new  # developer-1 will NOT be included in this.
+      - 'feat/**' # feat/new feat/new/button
+    
+    paths-ignore:
+      - '.github/workflows/*'
 
 jobs:
   deploy:
